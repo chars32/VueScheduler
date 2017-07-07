@@ -12,3 +12,6 @@ dist
 
 # Images UI
 imagesUI
+
+# package
+package-lock.json
