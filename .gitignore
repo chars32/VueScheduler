@@ -17,5 +17,5 @@ imagesUI
 package-lock.json
 
 # Images
-static/*
+static/doc-images/*
 
