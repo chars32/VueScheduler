@@ -1,4 +1,4 @@
-# testing
+#VueScheduler Project
 
 > Nuxt.js + Vuetify.js project
 
