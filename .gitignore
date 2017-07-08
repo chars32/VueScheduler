@@ -13,8 +13,9 @@ dist
 # Images UI
 imagesUI
 
-# package
+# Package
 package-lock.json
 
-# images carousel
-static/*.md
+# Images
+static/*
+
