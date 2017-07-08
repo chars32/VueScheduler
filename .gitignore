@@ -15,3 +15,6 @@ imagesUI
 
 # package
 package-lock.json
+
+# images carousel
+static/doc-images/
