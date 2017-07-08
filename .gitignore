@@ -17,4 +17,4 @@ imagesUI
 package-lock.json
 
 # images carousel
-static/
+static
