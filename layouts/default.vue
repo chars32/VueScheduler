@@ -13,16 +13,13 @@
     </v-toolbar>
 
     <main>
-      <v-container fluid>
+      <v-container>
         <v-slide-y-transition mode="out-in">
           <nuxt />
         </v-slide-y-transition>
       </v-container>
     </main>
-
-    <v-footer :fixed="fixed">
-      <span>&copy; 2017</span>
-    </v-footer>
+        
   </v-app>
 </template>
 
