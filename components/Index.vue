@@ -2,7 +2,7 @@
   <div>
     <div id="caja-general-botones">
       <div id="uno" class="caja-botones">
-        <v-btn router to="/meetup" class="px-3" light>EXPLORE MEETUPS</v-btn>
+        <v-btn router to="/meetups" class="px-3" light>EXPLORE MEETUPS</v-btn>
       </div>
       <div id="dos" class="caja-botones">
         <v-btn class="px-3" primary dark>ORGANIZE A MEETUP</v-btn>
@@ -18,7 +18,7 @@
     <v-layout>
       <v-flex xs12>
         <v-carousel>
-          <v-carousel-item v-for="(item,i) in items" v-bind:src="item.src" :key="i"></v-carousel-item>
+          <v-carousel-item v-for="(meetup,i) in meetups" v-bind:src="meetup.src" :key="i"></v-carousel-item>
         </v-carousel>
       </v-flex>
     </v-layout>
@@ -33,23 +33,9 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        items: [
-          {
-            src: require('../static/doc-images/carousel/beautifultrees.jpg')
-          },
-          {
-            src: require('../static/doc-images/carousel/AsturiasSpain.jpg')
-          },
-          {
-            src: require('../static/doc-images/carousel/sunrise.jpg')
-          }
-        ]
-      }
-    }
-  }
+   export default {
+    props: ['meetups']
+   } 
 </script>
 
 <style>
