@@ -19,7 +19,7 @@
         fixed: false,
         items: [
           {name: 'VIEW MEETUPS', icon:'date_range', to:'/meetups'},
-          {name: 'ORGANIZE MEETUP', icon:'room'},
+          {name: 'ORGANIZE MEETUP', icon:'room', to:'/organize'},
           {name: 'PROFILE', icon:'perm_identity'},
           {name: 'LOGOUT', icon:'exit_to_app'}
         ]

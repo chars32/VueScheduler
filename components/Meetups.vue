@@ -30,7 +30,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .cajas-cards{
     justify-content: space-between;
   }

@@ -38,7 +38,7 @@
    } 
 </script>
 
-<style>
+<style scoped>
   #uno {
     display: flex;
     justify-content: flex-end;
