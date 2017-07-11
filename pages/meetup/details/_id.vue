@@ -2,18 +2,18 @@
     <div>
       <v-layout class="orange">
         <v-flex>
-          <h5 class="no-padd white--text pa-3">{{ meetups[num_id].name }}</h5>
+          <h5 class="no-padd white--text pa-3">{{ name }}</h5>
         </v-flex>
       </v-layout>
 
       <v-layout>
-        <img :src=" meetups[num_id].src" alt="">
+        <img :src="src" alt="">
       </v-layout>
 
       <v-layout class="indigo pa-3">
         <v-flex xs12>
-          <h5 class="white--text">{{ meetups[num_id].name }}</h5>
-          <p>{{ meetups[num_id].date }}</p>
+          <h5 class="white--text">{{ name }}</h5>
+          <p>{{ date }}</p>
         </v-flex>
       </v-layout>
 
@@ -43,10 +43,20 @@
     export default {
       data(){
         return {
-          num_id: this.$route.params.id - 1,
-          meetups: meetups,
-          dialog: false
+          dialog: ''
         }
+      },
+
+      validate ({ params }) {
+        return !isNaN(+params.id)
+      },
+
+      asyncData ({ params, error }) {
+        const meet = meetups.find((meetup) => String(meetup.id) === params.id)
+        if (!meet) {
+          return error({ message: 'User not found', statusCode: 404 })
+        }
+        return meet
       }
     }
   </script>

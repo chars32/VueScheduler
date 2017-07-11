@@ -23,12 +23,10 @@
 </template>
 
 <script>
+  import datos from '../store/bdprueba.js'
+
   export default {
-    props: ['meetups'],
-    data(){
-      return {
-      }
-    }
+    props: ['meetups']
   }
 </script>
 
