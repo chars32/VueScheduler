@@ -1,6 +1,6 @@
 <template>
   <v-layout class="caja">
-    <v-card v-for="(meetup, i) in meetups" :key='i' class="cajita my-4">
+    <v-card v-for="(meetup, i) in meetups" :key='i' class="cajita ma-3">
         <v-card-media
           :src= "meetup.src"
           height="200px"
@@ -39,7 +39,7 @@
   .caja{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    
   }
   .cajita{
     width: 30%;

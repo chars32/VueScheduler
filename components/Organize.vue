@@ -61,7 +61,7 @@
 
           <v-layout row class="my-5">
             <v-flex class="centrito">
-              <v-btn class="yellow lighten-1" large @click.native="sendMeetup">Create Meetup</v-btn>
+              <nuxt-link to="/meetups" ><v-btn class="yellow lighten-1" large @click.native="sendMeetup">Create Meetup</v-btn></nuxt-link>
             </v-flex>
           </v-layout>  
         </v-container>
@@ -111,7 +111,7 @@
       sendMeetup: function() {
         meetups.push({
           id: meetups.length+1,
-          date: this.title,
+          name: this.title,
           description: this.description,
           date: this.picker + this.e4,
           src: this.image
@@ -134,10 +134,7 @@
     width: 200px;
     height: 150px;
   }
-
-  .picker__title{
-    background: red !important;
-  }
+  
   .centrito{
     display: flex;
     justify-content: center;
