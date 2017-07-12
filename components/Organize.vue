@@ -9,39 +9,48 @@
       <v-card-text>
         <v-container fluid>
           
-          <v-layout row>
+          <v-layout row class="my-5">
             <v-flex xs12>
               <v-text-field
                 name="input-1"
                 label="Title"
                 id="testing"
+                v-model="title"
               ></v-text-field>
             </v-flex>
           </v-layout>
 
-          <v-layout row>
+          <v-layout row class="my-5">
             <v-flex>
-              <img :src="image" class="foto">
-              <v-btn class="grey lighten-1">
-                <div class="choose_file">
-                  <span>Upload Image</span>
-                  <input type="file" @change="onFileChange"/>                  
-                </div>
-              </v-btn>
+              <img :src="image" class="foto" :id="id"> 
+              <div v-if="!image">
+                <v-btn class="grey lighten-1">
+                  <div class="choose_file">
+                    <span>Upload Image</span>
+                    <input type="file" @change="onFileChange"/>                  
+                  </div>
+                </v-btn>
+              </div>
+              <div v-else>
+                <v-btn class="grey lighten-1" @click.native="removeImage">
+                  Delete Image
+                </v-btn>
+              </div>
             </v-flex>
           </v-layout>
 
-          <v-layout row>
+          <v-layout row class="my-5">
             <v-flex>
               <v-text-field
                 name="input-1"
                 label="Description"
                 id="testing"
+                v-model='description'
               ></v-text-field>
             </v-flex>
           </v-layout>
 
-          <v-layout row>
+          <v-layout row clas="my-5">
             <v-flex class="centrito">
               <v-date-picker v-model="picker"></v-date-picker>
             </v-flex>
@@ -50,12 +59,11 @@
             </v-flex>
           </v-layout>
 
-          <v-layout row class="py-5">
+          <v-layout row class="my-5">
             <v-flex class="centrito">
-              <v-btn class="yellow lighten-1" normal large>Create Meetup</v-btn>
+              <v-btn class="yellow lighten-1" large @click.native="sendMeetup">Create Meetup</v-btn>
             </v-flex>
           </v-layout>  
-
         </v-container>
       </v-card-text>
     </v-card>
@@ -64,13 +72,17 @@
 
 
 <script>
+  import meetups from '../store/bdprueba.js'
+
   export default {
     data () {
       return {
+        title: '',
+        image: '',
+        description: '',
         picker: null,
         e4: null,
-        nombre: null,
-        image: ''
+        id: 'off'
       }
     },
     methods: {
@@ -88,16 +100,36 @@
           vm.image = e.target.result;
         };
         reader.readAsDataURL(file);
+        this.id = 'on';
 
       },
       removeImage: function (e) {
-      this.image = '';
+        this.image = '';
+        this.id = 'off';
+      },
+
+      sendMeetup: function() {
+        meetups.push({
+          id: meetups.length+1,
+          date: this.title,
+          description: this.description,
+          date: this.picker + this.e4,
+          src: this.image
+        })
       }
     }
   }
 </script>
 
 <style scoped>
+  #on {
+    display: block
+  }
+
+  #off {
+    display: none;
+  }
+
   .foto{
     width: 200px;
     height: 150px;
