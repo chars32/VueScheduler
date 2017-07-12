@@ -21,7 +21,13 @@
 
           <v-layout row>
             <v-flex>
-              <v-btn class="grey lighten-1">Upload Image</v-btn>
+              <img :src="image" class="foto">
+              <v-btn class="grey lighten-1">
+                <div class="choose_file">
+                  <span>Upload Image</span>
+                  <input type="file" @change="onFileChange"/>                  
+                </div>
+              </v-btn>
             </v-flex>
           </v-layout>
 
@@ -48,26 +54,55 @@
             <v-flex class="centrito">
               <v-btn class="yellow lighten-1" normal large>Create Meetup</v-btn>
             </v-flex>
-          </v-layout>
-          
+          </v-layout>  
+
         </v-container>
       </v-card-text>
     </v-card>
   </div>
 </template>
 
+
 <script>
   export default {
     data () {
       return {
         picker: null,
-        e4: null
+        e4: null,
+        nombre: null,
+        image: ''
+      }
+    },
+    methods: {
+      onFileChange(e) {
+        var files = e.target.files;
+
+        this.createImage(files[0]);
+      },
+      createImage(file) {
+        var image = new Image();
+        var reader = new FileReader();
+        var vm = this;
+
+        reader.onload = (e) => {
+          vm.image = e.target.result;
+        };
+        reader.readAsDataURL(file);
+
+      },
+      removeImage: function (e) {
+      this.image = '';
       }
     }
   }
 </script>
 
 <style scoped>
+  .foto{
+    width: 200px;
+    height: 150px;
+  }
+
   .picker__title{
     background: red !important;
   }
@@ -75,4 +110,11 @@
     display: flex;
     justify-content: center;
   }
+
+ 
+.choose_file input[type="file"]{
+    position:absolute;
+    top:0; left:0;
+    opacity:0; 
+}
 </style>
