@@ -2,10 +2,16 @@
   <div>
     <div id="caja-general-botones">
       <div id="uno" class="caja-botones">
-        <v-btn router to="/meetups" class="px-3" light>EXPLORE MEETUPS</v-btn>
+        <nuxt-link to="/meetups" tag="button">
+          <!--<v-btn class="px-3" light>EXPLORE MEETUPS</v-btn>-->
+          EXPLORE MEETUPS
+        </nuxt-link>        
       </div>
       <div id="dos" class="caja-botones">
-        <v-btn class="px-3" primary dark>ORGANIZE A MEETUP</v-btn>
+        <nuxt-link to="/organize" tag="button">
+          <!--<v-btn class="indigo grey--text text--lighten-4 px-3">ORGANIZE A MEETUP</v-btn>-->
+          ORGANIZE A MEETUP
+        </nuxt-link>
       </div>
     </div>
 

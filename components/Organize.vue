@@ -24,11 +24,9 @@
             <v-flex>
               <img :src="image" class="foto" :id="id"> 
               <div v-if="!image">
-                <v-btn class="grey lighten-1">
-                  <div class="choose_file">
-                    <span>Upload Image</span>
-                    <input type="file" @change="onFileChange"/>                  
-                  </div>
+                <v-btn class="grey lighten-1 choose_file">                  
+                  <span>Upload Image</span>
+                  <input type="file" @change="onFileChange"/>
                 </v-btn>
               </div>
               <div v-else>
@@ -134,7 +132,7 @@
     width: 200px;
     height: 150px;
   }
-  
+
   .centrito{
     display: flex;
     justify-content: center;

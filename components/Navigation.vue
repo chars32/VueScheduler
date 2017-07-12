@@ -1,6 +1,7 @@
 <template>
   <v-toolbar fixed class="indigo indigo--text text--lighten-5">
-    <v-toolbar-title v-text="title"></v-toolbar-title>
+    <!--<v-toolbar-title v-text="title" to="/"></v-toolbar-title>-->
+    <nuxt-link to="/" tag="a" class="titulo">VueScheduler</nuxt-link>
     <v-spacer></v-spacer>
     <v-layout v-for="item in items" :key="item.id">
       <v-btn router :to='item.to' class="indigo--text text--lighten-5" flat>
@@ -27,3 +28,12 @@
     }
   }
 </script>
+
+<style scoped>
+  .titulo{
+    text-decoration: none;
+    color: white;
+    font-size: 21px;
+    margin-left: 25px;
+  }  
+</style>
