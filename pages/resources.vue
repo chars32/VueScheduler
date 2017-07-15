@@ -76,7 +76,6 @@
 
 
 <script>
-  import meetups from '../store/bdprueba.js'
 
   export default {
     data () {
@@ -94,7 +93,7 @@
     },
     methods: {
       submit() {
-        this.$http.post('', this.meetup)
+        this.$http.post('meetups.json', this.meetup)
           .then(response => {
             console.log(response)
           }, error => {
@@ -102,7 +101,7 @@
           })
       },
       fetchData() {
-        this.$http.get('')
+        this.$http.get('meetups.json')
           .then(response => {
             return response.json();
           })

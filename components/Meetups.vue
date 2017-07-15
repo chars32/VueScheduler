@@ -2,14 +2,14 @@
   <v-layout class="caja">
     <v-card v-for="(meetup, i) in meetups" :key='i' class="cajita ma-3">
         <v-card-media
-          :src= "meetup.src"
+          :src= "meetup.image"
           height="200px"
         >
         </v-card-media>
         <v-card-title primary-title>
           <div> 
-            <div class="headline">{{ meetup.name}}</div>
-            <span class="grey--text">{{meetup.date}}</span>
+            <div class="headline">{{ meetup.title}} </div>
+            <span class="grey--text">{{meetup.picker}}{{meetup.e4}}</span>
           </div>
         </v-card-title>
         <v-card-actions>
@@ -23,14 +23,31 @@
 </template>
 
 <script>
-  import datos from '../store/bdprueba.js'
-
   export default {
-    props: ['meetups'],
+    // props: ['meetups'],
     data() {
       return {
-        show: false
+        show: false,
+        meetups: []
       }
+    },
+    methods: {
+      fetchData() {
+        this.$http.get('meetups.json')
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            const resultArray = [];
+            for (let key in data) {
+              resultArray.push(data[key])
+            }
+            this.meetups = resultArray;
+          })
+      }
+    },
+    created: function() {
+      this.fetchData();
     }
   }
 </script>
@@ -39,7 +56,7 @@
   .caja{
     display: flex;
     flex-wrap: wrap;
-    
+     
   }
   .cajita{
     width: 30%;
