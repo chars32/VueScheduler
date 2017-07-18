@@ -1,5 +1,5 @@
 <template>
-  <div>
+ <div>
    <div id="caja-general-botones">
       <div id="uno" class="caja-botones">
         <v-btn router to="/meetups" class="px-3" >EXPLORE MEETUPS</v-btn> 
@@ -28,16 +28,10 @@
         <p class="text-xs-center">Description</p>
       </v-flex>
     </v-layout>
-
-    <div v-for="meetup in meetups">
-      {{ meetup.title }}    
-    </div>
-
-
   </div>
 </template>
 
-<script>
+<script>  
   export default {
     data() {
       return {
@@ -54,8 +48,11 @@
           .then(data => {
             const resultArray = [];
             for (let key in data) {
+              console.log(key)
+              data[key].id = key
               resultArray.push(data[key])
             }
+            console.log(resultArray)
             this.meetups = resultArray;
           })
       }

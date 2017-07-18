@@ -22,9 +22,9 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['vuetify', 'vue-resource']
+    vendor: ['vuetify', 'vue-resource', 'vuefire', 'firebase']
   },
-  plugins: ['~plugins/vuetify.js', '~plugins/vueresource.js'],
+  plugins: ['~plugins/vuetify.js', '~plugins/vueresource.js', '~plugins/vuefire.js', '~plugins/firebase.js'],
   css: [
     { src: '~assets/style/app.styl', lang: 'styl' }
   ]

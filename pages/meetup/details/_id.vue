@@ -1,6 +1,7 @@
   <template>
     <div>
-      <v-layout class="orange">
+      <h1>Probando</h1>
+      <!--<v-layout class="orange">
         <v-flex>
           <h5 class="no-padd white--text pa-3">{{ name }}</h5>
         </v-flex>
@@ -33,31 +34,56 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-      </v-layout>
+      </v-layout>-->
+      {{ id }}
+      {{ meetups }}
     </div>
   </template>
 
   <script>
-    import meetups from '../../../store/bdprueba.js'
+    // import meetups from '../../../store/bdprueba.js'
 
     export default {
       data(){
         return {
-          dialog: ''
+          dialog: '',
+          meetups: [],
+          id: this.$route.params
         }
       },
 
-      validate ({ params }) {
-        return !isNaN(+params.id)
+      methods: {
+        fetchData() {
+          this.$http.get('meetups.json')
+            .then(response => {
+              return response.json();
+            })
+            .then(data => {
+              // const resultArray = [];
+              // for (let key in data) {              
+              //   resultArray.push(data[key])
+              // }
+              // this.meetups = resultArray;
+            })
+        }
       },
 
-      asyncData ({ params, error }) {
-        const meet = meetups.find((meetup) => String(meetup.id) === params.id)
-        if (!meet) {
-          return error({ message: 'User not found', statusCode: 404 })
-        }
-        return meet
+      created: function() {
+        this.fetchData();
       }
+
+      // validate ({ params }) {
+      //   console.log(params)
+      //   return !isNaN(+params.id)
+      // },
+
+      // asyncData ({ params, error }) {
+      //   const meet = meetups.find((meetup) => String(meetup.id) === params.id)
+      //   if (!meet) {
+      //     return error({ message: 'User not found', statusCode: 404 })
+      //   }
+      //   return meet
+      // }
     }
   </script>
 

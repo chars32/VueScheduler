@@ -81,6 +81,7 @@
     data () {
       return {
         meetup:{
+          id:'',
           title: '',
           image: '',
           description: '',
@@ -88,7 +89,7 @@
           e4: null,
         },
          id: 'off',
-         meetups: []
+         meetups: [],
       }
     },
     methods: {

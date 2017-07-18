@@ -8,7 +8,7 @@
         </v-card-media>
         <v-card-title primary-title>
           <div> 
-            <div class="headline">{{ meetup.title}} </div>
+            <div class="headline">{{ meetup.title}}</div>
             <span class="grey--text">{{meetup.picker}}{{meetup.e4}}</span>
           </div>
         </v-card-title>
@@ -28,7 +28,8 @@
     data() {
       return {
         show: false,
-        meetups: []
+        meetups: [],
+        id: ''
       }
     },
     methods: {
@@ -40,8 +41,11 @@
           .then(data => {
             const resultArray = [];
             for (let key in data) {
+              console.log(key)
+              data[key].id = key
               resultArray.push(data[key])
             }
+            console.log(resultArray)
             this.meetups = resultArray;
           })
       }
