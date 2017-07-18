@@ -48,11 +48,9 @@
           .then(data => {
             const resultArray = [];
             for (let key in data) {
-              console.log(key)
               data[key].id = key
               resultArray.push(data[key])
             }
-            console.log(resultArray)
             this.meetups = resultArray;
           })
       }

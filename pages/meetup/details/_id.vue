@@ -1,20 +1,19 @@
   <template>
     <div>
-      <h1>Probando</h1>
-      <!--<v-layout class="orange">
+      <v-layout class="orange">
         <v-flex>
-          <h5 class="no-padd white--text pa-3">{{ name }}</h5>
+          <h5 class="no-padd white--text pa-3">{{ meetup.title }}</h5>
         </v-flex>
       </v-layout>
 
       <v-layout>
-        <img :src="src" alt="">
+        <img :src="meetup.image" alt="">
       </v-layout>
 
       <v-layout class="indigo pa-3">
         <v-flex xs12>
-          <h5 class="white--text">{{ name }}</h5>
-          <p>{{ date }}</p>
+          <h5 class="white--text">{{ meetup.title }}</h5>
+          <p>{{ meetup.picker }} {{meetup.e4}}</p>
         </v-flex>
       </v-layout>
 
@@ -34,21 +33,16 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-      </v-layout>-->
-      {{ id }}
-      {{ meetups }}
+      </v-layout>
     </div>
   </template>
 
   <script>
-    // import meetups from '../../../store/bdprueba.js'
-
     export default {
       data(){
         return {
           dialog: '',
-          meetups: [],
-          id: this.$route.params
+          meetup: [],
         }
       },
 
@@ -59,31 +53,36 @@
               return response.json();
             })
             .then(data => {
-              // const resultArray = [];
-              // for (let key in data) {              
-              //   resultArray.push(data[key])
-              // }
-              // this.meetups = resultArray;
+              const resultArray = [];
+              for (let key in data) {                
+                data[key].id = key
+                resultArray.push(data[key])
+              }
+              for (let arr in resultArray){
+                if (String(resultArray[arr].id) === String(this.$route.params.id) ){
+                  this.meetup = resultArray[arr]
+                }
+              }
             })
-        }
+        },
       },
 
       created: function() {
         this.fetchData();
-      }
+      },
 
       // validate ({ params }) {
       //   console.log(params)
       //   return !isNaN(+params.id)
       // },
 
-      // asyncData ({ params, error }) {
-      //   const meet = meetups.find((meetup) => String(meetup.id) === params.id)
-      //   if (!meet) {
-      //     return error({ message: 'User not found', statusCode: 404 })
-      //   }
-      //   return meet
-      // }
+        // asyncData ({ params, error }) {
+        //   const meet = this.meetups.find((meetup) => String(meetup.id) === params.id)
+        //   if (!meet) {
+        //     return error({ message: 'User not found', statusCode: 404 })
+        //   }
+        //   return meet
+        // }
     }
   </script>
 

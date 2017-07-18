@@ -96,7 +96,6 @@
       submit() {
         this.$http.post('meetups.json', this.meetup)
           .then(response => {
-            console.log(response)
           }, error => {
             console.log(error)
           })

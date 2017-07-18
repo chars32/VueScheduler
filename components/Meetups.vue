@@ -14,7 +14,7 @@
         </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn router :to="'/meetup/details/'+meetup.id" icon class="boton-hover">
+          <v-btn router :to="'/meetup/details/'+meetup.id" :meetup='meetup' icon class="boton-hover">
             <v-icon class="icon-hover">{{ 'forward' }}</v-icon>
           </v-btn>
         </v-card-actions>
@@ -24,7 +24,6 @@
 
 <script>
   export default {
-    // props: ['meetups'],
     data() {
       return {
         show: false,
@@ -41,11 +40,9 @@
           .then(data => {
             const resultArray = [];
             for (let key in data) {
-              console.log(key)
               data[key].id = key
               resultArray.push(data[key])
             }
-            console.log(resultArray)
             this.meetups = resultArray;
           })
       }
