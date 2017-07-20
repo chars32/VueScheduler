@@ -70,7 +70,6 @@
 
 
 <script>
-  import meetups from '../store/bdprueba.js'
 
   export default {
     data () {

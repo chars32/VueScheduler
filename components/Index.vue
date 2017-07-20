@@ -1,6 +1,6 @@
 <template>
  <div>
-   <div id="caja-general-botones">
+   <!--<div id="caja-general-botones">
       <div id="uno" class="caja-botones">
         <v-btn router to="/meetups" class="px-3" >EXPLORE MEETUPS</v-btn> 
       </div>
@@ -22,42 +22,58 @@
         </v-carousel>
       </v-flex>
     </v-layout>
-
     <v-layout>
       <v-flex xs12>
         <p class="text-xs-center">Description</p>
       </v-flex>
-    </v-layout>
+    </v-layout>-->
+    {{ $store.state }}
+    <br>
+    
+    <br>
   </div>
 </template>
 
-<script>  
+<script>
+  import { mapState } from 'vuex'
+
   export default {
-    data() {
-      return {
-      meetups: []
-      }
+
+    computed: {
+      ...mapState({
+        counter: 'counter'
+      })
     },
-    // props: ['meetups'],
-    methods: {
-      fetchData() {
-        this.$http.get('meetups.json')
-          .then(response => {
-            return response.json();
-          })
-          .then(data => {
-            const resultArray = [];
-            for (let key in data) {
-              data[key].id = key
-              resultArray.push(data[key])
-            }
-            this.meetups = resultArray;
-          })
-      }
-    },
-    created: function() {
-      this.fetchData();
+
+    created() {
+      this.$store.commit('increment')
     }
+    
+    
+    // data() {
+    //   return {
+    //     meetups: [],
+    //   }
+    // },
+    // methods: {
+    //   fetchData() {
+    //     this.$http.get('meetups.json') 
+    //       .then(response => {
+    //         return response.json();
+    //       })
+    //       .then(data => {
+    //         const resultArray = [];
+    //         for (let key in data) {
+    //           data[key].id = key
+    //           resultArray.push(data[key])
+    //         }
+    //         this.meetups = resultArray;
+    //       })
+    //   },
+    // },
+    // created: function() {
+    //   this.fetchData();
+    // }
   } 
 </script>
 
