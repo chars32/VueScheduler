@@ -1,6 +1,6 @@
 <template>
  <div>
-   <!--<div id="caja-general-botones">
+   <div id="caja-general-botones">
       <div id="uno" class="caja-botones">
         <v-btn router to="/meetups" class="px-3" >EXPLORE MEETUPS</v-btn> 
       </div>
@@ -18,7 +18,7 @@
     <v-layout>
       <v-flex xs12>
         <v-carousel>
-          <v-carousel-item v-for="(meetup,i) in meetups" v-bind:src="meetup.image" :key="i"></v-carousel-item>
+          <v-carousel-item v-for="(count,i) in counter" v-bind:src="count.image" :key="i"></v-carousel-item>
         </v-carousel>
       </v-flex>
     </v-layout>
@@ -26,8 +26,7 @@
       <v-flex xs12>
         <p class="text-xs-center">Description</p>
       </v-flex>
-    </v-layout>-->
-    {{ $store.state }}
+    </v-layout>
     <br>
     
     <br>
@@ -48,32 +47,6 @@
     created() {
       this.$store.commit('increment')
     }
-    
-    
-    // data() {
-    //   return {
-    //     meetups: [],
-    //   }
-    // },
-    // methods: {
-    //   fetchData() {
-    //     this.$http.get('meetups.json') 
-    //       .then(response => {
-    //         return response.json();
-    //       })
-    //       .then(data => {
-    //         const resultArray = [];
-    //         for (let key in data) {
-    //           data[key].id = key
-    //           resultArray.push(data[key])
-    //         }
-    //         this.meetups = resultArray;
-    //       })
-    //   },
-    // },
-    // created: function() {
-    //   this.fetchData();
-    // }
   } 
 </script>
 
